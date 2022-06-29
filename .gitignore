@@ -285,7 +285,9 @@ dmypy.json
 cython_debug/
 
 # ignore idea file
-.idea
+.idea/fast-api-strawberry-auth-demo.iml
+.idea/*
+
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
