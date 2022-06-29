@@ -4,10 +4,8 @@ from schemas.mutations import Mutation
 from schemas.queries import Query
 from fastapi import FastAPI
 from strawberry.asgi import GraphQL
-from schemas.subscriptions import Subscription
 
-schema = strawberry.Schema(query=Query, mutation=Mutation,
-                           subscription=Subscription)
+schema = strawberry.Schema(query=Query, mutation=Mutation)
 graphql_app = GraphQL(schema)
 
 app = FastAPI()
