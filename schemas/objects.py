@@ -1,4 +1,3 @@
-import typing
 import strawberry
 
 
@@ -18,3 +17,14 @@ class Author:
 class User:
     username: str
     password: str
+
+
+@strawberry.type
+class LoginSuccess:
+    username: str
+    token: str
+
+
+@strawberry.type
+class LoginError:
+    message: str
