@@ -10,25 +10,26 @@ from data.dataset import books, authors, users
 from schemas.inputs import AddBookInput, AddAuthorInput, AddUserInput
 from security.authentication import authenticate_user
 from security.jwt import create_access_token
+from security.permissions import IsAuthenticated
 
 
 @strawberry.type
 class Mutation:
-    @strawberry.field
+    @strawberry.field(permission_classes=[IsAuthenticated])
     def add_book(self, book: AddBookInput) -> Book:
         new_book = Book(title=book.title, author=book.author)
         books.append(new_book)
 
         return new_book
 
-    @strawberry.field
+    @strawberry.field(permission_classes=[IsAuthenticated])
     def add_author(self, author: AddAuthorInput) -> Author:
         new_author = Author(name=author.name)
         authors.append(new_author)
 
         return new_author
 
-    @strawberry.field
+    @strawberry.field()
     def add_user(self, user: AddUserInput) -> User:
         new_user = User(username=user.username, password=user.password)
         users.append(new_user)
